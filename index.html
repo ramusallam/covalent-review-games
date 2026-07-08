@@ -4,15 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Covalent Bonding Review Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Roboto+Mono:wght@400;500;700&family=Roboto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --cream:#F0EBE3; --bg:#F7F3EE; --white:#FFFFFF;
+    --ink:#1C1917; --warm:#57534E; --warm-muted:#7C6F5A; --warm-faint:#A0937B;
+    --indigo:#6366F1; --indigo-2:#818CF8; --indigo-hover:#4F46E5;
+    --indigo-soft:rgba(99,102,241,0.09); --indigo-line:rgba(99,102,241,0.30);
+    --amber:#B4791F; --amber-soft:#FBF3E2; --amber-line:#EBD9A8;
+    --green:#16A34A; --red:#EF4444; --purple:#A855F7;
+    --line:#DDD1C3; --line-soft:#F0EBE3; --sand:#E8E0D2;
+    --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+    --font-serif:'Roboto Serif',Georgia,Cambria,serif;
+    --font-mono:'Roboto Mono',monospace;
+    --sh-sm:0 1px 2px rgba(17,17,17,0.05),0 2px 6px rgba(17,17,17,0.08);
+    --sh-md:0 4px 12px rgba(17,17,17,0.06),0 2px 4px rgba(17,17,17,0.04);
+    --sh-lg:0 16px 40px rgba(17,17,17,0.10),0 4px 12px rgba(17,17,17,0.06);
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f7fa;
-    color: #333;
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--ink);
     line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* ============== VIEW SYSTEM ============== */
@@ -21,9 +38,9 @@
 
   /* ============== MENU ============== */
   .menu-hero {
-    background: linear-gradient(135deg, #1A6B6B 0%, #2A9D8F 100%);
+    background: linear-gradient(150deg, #4F46E5 0%, #6366F1 100%);
     color: white;
-    padding: 70px 40px 90px;
+    padding: 56px 40px 92px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -33,7 +50,7 @@
     position: absolute;
     top: -50%; left: -50%;
     width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 2px);
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 2px);
     background-size: 40px 40px;
     pointer-events: none;
   }
@@ -41,39 +58,50 @@
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .menu-hero .logo span {
+    font-family: var(--font-mono) !important;
+    letter-spacing: 0.34em !important;
   }
   .menu-hero h1 {
-    font-size: 3rem;
+    font-family: var(--font-serif);
+    font-size: 2.7rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     letter-spacing: -0.5px;
+    position: relative;
+    line-height: 1.08;
   }
   .menu-hero p {
-    font-size: 1.15rem;
-    opacity: 0.92;
+    font-size: 1rem;
+    opacity: 0.94;
     max-width: 620px;
     margin: 0 auto;
+    position: relative;
   }
   .menu-hero .badge-row {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 9px;
     margin-top: 22px;
     flex-wrap: wrap;
+    position: relative;
   }
   .menu-hero .badge-row span {
     background: rgba(255,255,255,0.18);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.78rem;
+    padding: 6px 13px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.04em;
+    font-family: var(--font-mono);
   }
 
   .games-grid {
     max-width: 1200px;
-    margin: -50px auto 40px;
+    margin: -56px auto 40px;
     padding: 0 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -86,46 +114,49 @@
   }
 
   .game-card {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 18px;
+    box-shadow: var(--sh-md);
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
   }
   .game-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 40px rgba(0,0,0,0.14);
+    transform: translateY(-5px);
+    box-shadow: var(--sh-lg);
   }
   .game-card .card-header {
     padding: 26px 24px 18px;
     color: white;
     position: relative;
   }
-  .game-card.g1 .card-header { background: linear-gradient(135deg, #2A9D8F 0%, #1A6B6B 100%); }
-  .game-card.g2 .card-header { background: linear-gradient(135deg, #E65C3C 0%, #b8432a 100%); }
-  .game-card.g3 .card-header { background: linear-gradient(135deg, #D4A843 0%, #a8832f 100%); }
+  .game-card.g1 .card-header { background: linear-gradient(150deg, #4F46E5 0%, #6366F1 100%); }
+  .game-card.g2 .card-header { background: linear-gradient(150deg, #9333EA 0%, #A855F7 100%); }
+  .game-card.g3 .card-header { background: linear-gradient(150deg, #B4791F 0%, #D6A02E 100%); }
 
   .game-card .pill {
     display: inline-block;
     background: rgba(255,255,255,0.22);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.7rem;
+    padding: 4px 11px;
+    border-radius: 9999px;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+    font-family: var(--font-mono);
   }
   .game-card h2 {
-    font-size: 1.5rem;
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
     font-weight: 700;
     margin-bottom: 4px;
   }
   .game-card .subtitle {
     font-size: 0.86rem;
-    opacity: 0.92;
+    opacity: 0.94;
   }
   .game-card .card-body {
     padding: 22px 24px 20px;
@@ -135,7 +166,7 @@
   }
   .game-card .card-body p {
     font-size: 0.92rem;
-    color: #555;
+    color: var(--warm);
     margin-bottom: 14px;
     flex: 1;
   }
@@ -146,32 +177,43 @@
     margin-bottom: 16px;
   }
   .game-card .meta span {
-    background: #f0f5f4;
-    color: #1A6B6B;
+    background: var(--indigo-soft);
+    color: var(--indigo);
     padding: 4px 10px;
-    border-radius: 10px;
-    font-size: 0.72rem;
-    font-weight: 600;
+    border-radius: 9px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
   }
+  .game-card.g2 .meta span { background: rgba(168,85,247,0.10); color: var(--purple); }
+  .game-card.g3 .meta span { background: var(--amber-soft); color: var(--amber); }
   .game-card .launch-btn {
-    background: linear-gradient(135deg, #1A6B6B 0%, #2A9D8F 100%);
+    background: var(--indigo);
     color: white;
     border: none;
     padding: 12px 20px;
     border-radius: 10px;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background 0.15s, transform 0.15s;
     width: 100%;
+    font-family: var(--font-sans);
   }
-  .game-card .launch-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(26,107,107,0.3); }
+  .game-card .launch-btn:hover { background: var(--indigo-hover); transform: translateY(-1px); }
+  .game-card.g2 .launch-btn { background: var(--purple); }
+  .game-card.g2 .launch-btn:hover { background: #9333EA; }
+  .game-card.g3 .launch-btn { background: var(--amber); }
+  .game-card.g3 .launch-btn:hover { background: #9A6519; }
 
   .menu-footer {
     text-align: center;
     padding: 30px 20px 40px;
-    color: #888;
+    color: var(--warm-muted);
     font-size: 0.8rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
   }
   .menu-footer .logo-small {
     display: inline-flex;
@@ -182,40 +224,48 @@
 
   /* ============== GAME VIEW SHARED ============== */
   .game-header {
-    padding: 18px 30px;
-    background: white;
-    border-bottom: 1px solid #e0ebe9;
+    padding: 16px 30px;
+    background: var(--white);
+    border-bottom: 1px solid var(--sand);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
   .back-btn {
-    background: #f0f5f4;
-    color: #1A6B6B;
-    border: none;
+    background: var(--cream);
+    color: var(--indigo);
+    border: 1px solid var(--line);
     padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    border-radius: 9px;
+    font-size: 0.82rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background 0.15s;
+    font-family: var(--font-sans);
   }
-  .back-btn:hover { background: #dbe8e5; }
+  .back-btn:hover { background: #efe9dd; }
 
   .game-title {
+    font-family: var(--font-serif);
     font-size: 1.1rem;
     font-weight: 700;
-    color: #1A6B6B;
+    color: var(--ink);
   }
   .question-counter {
-    background: #1A6B6B;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 16px;
-    font-size: 0.8rem;
+    background: var(--indigo-soft);
+    color: var(--indigo);
+    padding: 7px 14px;
+    border-radius: 9999px;
+    font-size: 0.78rem;
     font-weight: 700;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
   }
 
   .stage {
@@ -228,51 +278,56 @@
   .timer-bar {
     width: 100%;
     height: 10px;
-    background: #e8f1f0;
-    border-radius: 10px;
+    background: var(--line-soft);
+    border-radius: 9999px;
     overflow: hidden;
     margin-bottom: 12px;
   }
   .timer-fill {
     height: 100%;
-    background: linear-gradient(90deg, #2A9D8F, #D4A843);
+    background: linear-gradient(90deg, var(--indigo), var(--indigo-2));
     width: 100%;
     transition: width 0.3s linear;
   }
-  .timer-fill.warn { background: linear-gradient(90deg, #D4A843, #E65C3C); }
-  .timer-fill.danger { background: linear-gradient(90deg, #E65C3C, #c0392b); animation: pulse 0.8s infinite; }
-  @keyframes pulse { 50% { opacity: 0.6; } }
+  .timer-fill.warn { background: linear-gradient(90deg, #D6A02E, #E0B44A); }
+  .timer-fill.danger { background: linear-gradient(90deg, #D6603E, #C24A32); animation: pulse 0.8s infinite; }
+  @keyframes pulse { 50% { opacity: 0.55; } }
 
   .timer-display {
     text-align: center;
+    font-family: var(--font-mono);
     font-size: 2rem;
     font-weight: 700;
-    color: #1A6B6B;
+    color: var(--indigo);
     margin-bottom: 20px;
     font-variant-numeric: tabular-nums;
   }
-  .timer-display.danger { color: #E65C3C; }
+  .timer-display.danger { color: var(--red); }
 
   /* ============== BIG FORMULA (GAME 1) ============== */
   .formula-card {
-    background: white;
+    background: var(--white);
+    border: 1px solid var(--sand);
     border-radius: 18px;
     padding: 70px 40px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    box-shadow: var(--sh-md);
     text-align: center;
     margin-bottom: 20px;
   }
   .formula-label {
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #2A9D8F;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--indigo);
     margin-bottom: 14px;
   }
   .formula-display {
+    font-family: var(--font-serif);
     font-size: 7rem;
     font-weight: 700;
-    color: #1A6B6B;
+    color: var(--indigo);
     letter-spacing: -2px;
     line-height: 1.1;
   }
@@ -292,34 +347,29 @@
   .difficulty-badge {
     display: inline-block;
     padding: 5px 14px;
-    border-radius: 14px;
-    font-size: 0.72rem;
+    border-radius: 9999px;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
     margin-bottom: 18px;
   }
-  .diff-easy { background: #e8f5f3; color: #1A6B6B; }
-  .diff-medium { background: #fdf3e0; color: #b8860b; }
-  .diff-hard { background: #fce8e4; color: #c0392b; }
-  .diff-trivia { background: #f3e8ed; color: #7A2D4E; }
+  .diff-easy { background: var(--indigo-soft); color: var(--indigo); }
+  .diff-medium { background: var(--amber-soft); color: var(--amber); }
+  .diff-hard { background: #FDECEC; color: #DC2626; }
+  .diff-trivia { background: rgba(168,85,247,0.10); color: var(--purple); }
 
   /* ============== TRIVIA CARD (Games 1 & 3) ============== */
   .trivia-card {
-    background: linear-gradient(135deg, #fff8ee 0%, #fdf3e0 100%);
+    background: linear-gradient(180deg, #FFFDF8 0%, var(--white) 100%);
     border-radius: 18px;
     padding: 40px 40px 36px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    box-shadow: var(--sh-md);
     margin-bottom: 20px;
-    border: 2px solid #e8d080;
+    border: 1px solid var(--amber-line);
+    border-top: 4px solid var(--amber);
     position: relative;
     overflow: hidden;
-  }
-  .trivia-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 8px;
-    background: linear-gradient(90deg, #D4A843, #E65C3C, #7A2D4E);
   }
   .trivia-header {
     text-align: center;
@@ -327,27 +377,31 @@
   }
   .trivia-category {
     display: inline-block;
-    background: #7A2D4E;
+    background: var(--amber);
     color: white;
     padding: 6px 16px;
-    border-radius: 16px;
-    font-size: 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.14em;
+    font-family: var(--font-mono);
     margin-bottom: 10px;
   }
   .trivia-subcategory {
     display: block;
-    font-size: 0.72rem;
-    color: #8b6914;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--amber);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 6px;
   }
   .trivia-question {
+    font-family: var(--font-serif);
     font-size: 1.7rem;
     font-weight: 700;
-    color: #5a4410;
+    color: var(--ink);
     text-align: center;
     line-height: 1.4;
     margin-bottom: 28px;
@@ -355,14 +409,17 @@
 
   /* ============== REVEAL CARD (all games) ============== */
   .reveal-card {
-    background: white;
+    background: var(--white);
+    border: 1px solid var(--sand);
     border-radius: 18px;
     padding: 30px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-    border-left: 6px solid #2A9D8F;
+    box-shadow: var(--sh-sm);
+    border-left: 5px solid var(--indigo);
     margin-bottom: 20px;
+    animation: fadeUp 0.35s ease-out;
   }
-  .reveal-card.trivia-reveal { border-left-color: #7A2D4E; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal-card.trivia-reveal { border-left-color: var(--green); }
   .reveal-header {
     display: flex;
     align-items: center;
@@ -372,23 +429,24 @@
   .reveal-header .check {
     width: 30px;
     height: 30px;
-    background: #2A9D8F;
+    background: var(--indigo);
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    font-weight: 800;
   }
-  .reveal-card.trivia-reveal .check { background: #7A2D4E; }
+  .reveal-card.trivia-reveal .check { background: var(--green); }
   .reveal-header h3 {
+    font-family: var(--font-serif);
     font-size: 1.15rem;
-    color: #1A6B6B;
+    color: var(--ink);
   }
-  .reveal-card.trivia-reveal .reveal-header h3 { color: #7A2D4E; }
+  .reveal-card.trivia-reveal .reveal-header h3 { color: var(--ink); }
   .lewis-display {
-    background: #f8fafa;
-    border: 1px solid #e0ebe9;
+    background: var(--cream);
+    border: 1px solid var(--sand);
     border-radius: 12px;
     padding: 24px;
     display: flex;
@@ -400,15 +458,15 @@
   .lewis-display svg { max-width: 100%; height: auto; }
   .explanation {
     font-size: 0.92rem;
-    color: #555;
+    color: var(--warm);
     padding: 14px 16px;
-    background: #f0f5f4;
+    background: var(--cream);
     border-radius: 10px;
     line-height: 1.65;
   }
-  .explanation strong { color: #1A6B6B; }
-  .reveal-card.trivia-reveal .explanation { background: #fdf3e0; }
-  .reveal-card.trivia-reveal .explanation strong { color: #7A2D4E; }
+  .explanation strong { color: var(--indigo); }
+  .reveal-card.trivia-reveal .explanation { background: var(--amber-soft); }
+  .reveal-card.trivia-reveal .explanation strong { color: var(--green); }
 
   /* ============== CONTROLS ============== */
   .controls {
@@ -421,50 +479,53 @@
   .btn {
     padding: 14px 28px;
     border: none;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    border-radius: 11px;
+    font-size: 0.94rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
-    font-family: inherit;
+    transition: background 0.15s, transform 0.15s;
+    font-family: var(--font-sans);
   }
   .btn-primary {
-    background: linear-gradient(135deg, #1A6B6B 0%, #2A9D8F 100%);
+    background: var(--indigo);
     color: white;
     min-width: 180px;
   }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(26,107,107,0.3); }
+  .btn-primary:hover { background: var(--indigo-hover); transform: translateY(-1px); }
   .btn-secondary {
-    background: #f0f5f4;
-    color: #1A6B6B;
+    background: var(--cream);
+    color: var(--warm);
+    border: 1px solid var(--line);
   }
-  .btn-secondary:hover { background: #dbe8e5; }
+  .btn-secondary:hover { background: #efe9dd; }
   .btn-coral {
-    background: linear-gradient(135deg, #E65C3C 0%, #c0392b 100%);
+    background: var(--indigo);
     color: white;
     min-width: 180px;
   }
-  .btn-coral:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(230,92,60,0.3); }
+  .btn-coral:hover { background: var(--indigo-hover); transform: translateY(-1px); }
   .btn-maroon {
-    background: linear-gradient(135deg, #7A2D4E 0%, #5a1f39 100%);
+    background: var(--amber);
     color: white;
     min-width: 180px;
   }
-  .btn-maroon:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(122,45,78,0.3); }
+  .btn-maroon:hover { background: #9A6519; transform: translateY(-1px); }
   .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
   /* ============== MULTIPLE CHOICE (Games 1, 2, 3) ============== */
   .question-card {
-    background: white;
+    background: var(--white);
+    border: 1px solid var(--sand);
     border-radius: 18px;
     padding: 40px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    box-shadow: var(--sh-md);
     margin-bottom: 20px;
   }
   .question-text {
+    font-family: var(--font-serif);
     font-size: 1.5rem;
     font-weight: 600;
-    color: #1A6B6B;
+    color: var(--ink);
     margin-bottom: 28px;
     line-height: 1.4;
   }
@@ -477,22 +538,22 @@
     .choices { grid-template-columns: 1fr; }
   }
   .choice {
-    background: #f8fafa;
-    border: 2px solid #e0ebe9;
+    background: var(--cream);
+    border: 1.5px solid var(--sand);
     border-radius: 12px;
     padding: 20px 22px;
     display: flex;
     align-items: center;
     gap: 14px;
     font-size: 1.1rem;
-    color: #333;
-    transition: all 0.2s;
+    color: var(--ink);
+    transition: all 0.18s;
   }
   .choice .letter {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: #1A6B6B;
+    background: var(--indigo);
     color: white;
     display: flex;
     align-items: center;
@@ -500,77 +561,82 @@
     font-weight: 700;
     font-size: 1.05rem;
     flex-shrink: 0;
+    font-family: var(--font-mono);
   }
   .choice.correct {
-    background: #e8f5f3;
-    border-color: #2A9D8F;
+    background: #EEF6E9;
+    border-color: var(--green);
   }
   .choice.correct .letter {
-    background: #2A9D8F;
+    background: var(--green);
   }
   .choice.correct::after {
     content: '\2713 CORRECT';
     margin-left: auto;
-    color: #1A6B6B;
-    font-size: 0.8rem;
+    color: var(--green);
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
   }
-  /* Trivia choices - maroon accent */
+  /* Trivia choices - amber accent */
   .trivia-card .choice.correct {
-    background: #f3e8ed;
-    border-color: #7A2D4E;
+    background: #EEF6E9;
+    border-color: var(--green);
   }
   .trivia-card .choice.correct .letter {
-    background: #7A2D4E;
+    background: var(--green);
   }
   .trivia-card .choice.correct::after {
-    color: #7A2D4E;
+    color: var(--green);
   }
   .trivia-card .choice .letter {
-    background: #7A2D4E;
+    background: var(--amber);
   }
 
   /* ============== CASE FILE (GAME 3) ============== */
   .case-file {
-    background: white;
+    background: var(--white);
+    border: 1px solid var(--sand);
     border-radius: 18px;
     padding: 0;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    box-shadow: var(--sh-md);
     overflow: hidden;
     margin-bottom: 20px;
-    border-top: 6px solid #D4A843;
+    border-top: 4px solid var(--amber);
   }
   .case-header {
-    background: #fdf3e0;
+    background: var(--amber-soft);
     padding: 20px 30px;
-    border-bottom: 1px solid #f0e0b8;
+    border-bottom: 1px solid var(--amber-line);
   }
   .case-stamp {
-    font-size: 0.72rem;
-    letter-spacing: 3px;
-    color: #b8860b;
-    font-weight: 700;
-    margin-bottom: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 900;
+    margin-bottom: 6px;
   }
   .case-title {
+    font-family: var(--font-serif);
     font-size: 1.8rem;
     font-weight: 700;
-    color: #8b6914;
-    font-family: 'Courier New', monospace;
+    color: var(--ink);
   }
   .case-body {
     padding: 30px;
   }
   .case-briefing {
-    background: #f8fafa;
-    border-left: 4px solid #2A9D8F;
+    background: var(--cream);
+    border-left: 4px solid var(--indigo);
     padding: 18px 22px;
     border-radius: 0 10px 10px 0;
     margin-bottom: 20px;
   }
-  .case-briefing strong { color: #1A6B6B; display: block; margin-bottom: 8px; font-size: 0.85rem; letter-spacing: 1px; }
-  .case-briefing p { color: #444; line-height: 1.65; font-size: 0.95rem; }
+  .case-briefing strong { color: var(--indigo); display: block; margin-bottom: 8px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-family: var(--font-mono); }
+  .case-briefing p { color: var(--warm); line-height: 1.65; font-size: 0.95rem; }
   .evidence-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -578,49 +644,54 @@
     margin-bottom: 18px;
   }
   .evidence-chip {
-    background: linear-gradient(135deg, #fdf3e0 0%, #f0e0b8 100%);
+    background: var(--amber-soft);
     border-radius: 12px;
     padding: 18px 20px;
-    border: 1px solid #e8d080;
+    border: 1px solid var(--amber-line);
   }
   .evidence-chip .element {
-    font-size: 0.75rem;
-    color: #8b6914;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--amber);
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     margin-bottom: 4px;
   }
   .evidence-chip .percent {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #5a4410;
-    font-family: 'Courier New', monospace;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
   }
   .case-instructions {
     padding: 16px 18px;
-    background: #fff7e6;
+    background: var(--indigo-soft);
     border-radius: 10px;
     font-size: 0.9rem;
-    color: #6b5012;
+    color: var(--warm);
     line-height: 1.6;
   }
-  .case-instructions strong { color: #8b6914; }
+  .case-instructions strong { color: var(--indigo); }
 
   /* ============== LEWIS SVG COMMON STYLES ============== */
-  .lewis-svg text { font-family: 'Segoe UI', Tahoma, sans-serif; font-weight: 700; fill: #1A6B6B; }
+  .lewis-svg text { font-family: var(--font-serif); font-weight: 700; fill: var(--indigo); }
   .lewis-svg .atom-text { font-size: 28px; }
-  .lewis-svg .bond { stroke: #1A6B6B; stroke-width: 3.5; stroke-linecap: round; }
-  .lewis-svg .dot { fill: #1A6B6B; }
-  .lewis-svg .charge { font-size: 20px; font-weight: 700; fill: #E65C3C; }
+  .lewis-svg .bond { stroke: var(--indigo); stroke-width: 3.5; stroke-linecap: round; }
+  .lewis-svg .dot { fill: var(--indigo); }
+  .lewis-svg .charge { font-size: 20px; font-weight: 700; fill: var(--red); }
 
   /* ============== FOOTER ============== */
   .app-footer {
-    background: white;
-    border-top: 3px solid #D4A843;
+    background: var(--white);
+    border-top: 1px solid var(--sand);
     padding: 20px;
     text-align: center;
-    color: #888;
-    font-size: 0.8rem;
+    color: var(--warm-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
     margin-top: 60px;
   }
   .app-footer .brand {
@@ -634,17 +705,19 @@
     gap: 10px;
     align-items: center;
     font-size: 0.85rem;
-    color: #555;
+    color: var(--warm);
     flex-wrap: wrap;
     justify-content: center;
   }
-  .settings-row label { font-weight: 600; color: #1A6B6B; }
+  .settings-row label { font-family: var(--font-mono); font-size: 10px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-muted); }
   .settings-row select, .settings-row input {
     padding: 6px 10px;
-    border: 1px solid #e0ebe9;
+    border: 1px solid var(--line);
     border-radius: 8px;
-    font-family: inherit;
+    font-family: var(--font-sans);
     font-size: 0.85rem;
+    background: var(--white);
+    color: var(--warm);
   }
 
   /* ============== SCOREBOARD ============== */
@@ -654,13 +727,15 @@
     flex-wrap: wrap;
     align-items: stretch;
     padding: 12px 20px;
-    background: linear-gradient(135deg, #1A6B6B, #2A9D8F);
+    background: linear-gradient(150deg, #4F46E5, #6366F1);
     color: white;
   }
   .scoreboard-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     padding: 0 16px 0 0;
     display: flex;
     align-items: center;
@@ -669,7 +744,7 @@
   }
   .team-card {
     background: rgba(255,255,255,0.12);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 8px 12px 10px;
     display: flex;
     flex-direction: column;
@@ -680,22 +755,23 @@
     transition: all 0.2s;
   }
   .team-card.leader {
-    background: linear-gradient(135deg, #F5C04D, #D4A843);
-    color: #3a2c0a;
-    box-shadow: 0 0 20px rgba(245,192,77,0.4);
+    background: linear-gradient(150deg, #FBF3E2, #EBD9A8);
+    color: #4A3A12;
+    box-shadow: 0 0 20px rgba(180,121,31,0.25);
   }
   .team-card.leader::after {
-    content: 'LEADER';
+    content: 'LEAD';
     position: absolute;
     top: -8px;
     right: 6px;
-    background: #7A2D4E;
+    background: var(--amber);
     color: white;
-    font-size: 0.55rem;
+    font-size: 0.52rem;
     padding: 2px 7px;
     border-radius: 6px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.12em;
+    font-family: var(--font-mono);
   }
   .team-name-input {
     font-size: 0.8rem;
@@ -718,6 +794,7 @@
   }
   .team-card.leader .team-name-input:focus { background: rgba(0,0,0,0.1); }
   .team-score {
+    font-family: var(--font-mono);
     font-size: 1.8rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
@@ -731,27 +808,28 @@
   }
   .team-btn {
     border: none;
-    border-radius: 6px;
+    border-radius: 7px;
     font-weight: 700;
     cursor: pointer;
-    font-family: inherit;
+    font-family: var(--font-sans);
     transition: all 0.15s;
   }
   .team-plus {
-    background: #2A9D8F;
-    color: white;
+    background: rgba(255,255,255,0.85);
+    color: var(--indigo-hover);
     padding: 5px 14px;
     font-size: 0.95rem;
   }
-  .team-plus:hover { background: #22857a; transform: scale(1.05); }
-  .team-card.leader .team-plus { background: #1A6B6B; }
+  .team-plus:hover { background: #ffffff; transform: scale(1.05); }
+  .team-card.leader .team-plus { background: var(--amber); color: #fff; }
   .team-minus {
-    background: rgba(230,92,60,0.7);
+    background: rgba(255,255,255,0.2);
     color: white;
     padding: 3px 7px;
     font-size: 0.7rem;
   }
-  .team-minus:hover { background: #E65C3C; }
+  .team-minus:hover { background: rgba(255,255,255,0.35); }
+  .team-card.leader .team-minus { background: rgba(74,58,18,0.15); color: #4A3A12; }
   .scoreboard-controls {
     display: flex;
     gap: 6px;
@@ -774,41 +852,54 @@
   .scoreboard-controls button:hover, .scoreboard-controls select:hover {
     background: rgba(255,255,255,0.25);
   }
-  .scoreboard-controls .btn-reset { background: rgba(230,92,60,0.7); border-color: rgba(230,92,60,0.8); }
-  .scoreboard-controls .btn-reset:hover { background: #E65C3C; }
+  .scoreboard-controls .btn-reset { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); }
+  .scoreboard-controls .btn-reset:hover { background: rgba(255,255,255,0.32); }
 
   /* Menu-style scoreboard (lighter theme for main menu) */
   #scoreboard-menu .scoreboard-inner {
-    background: white;
-    color: #1A6B6B;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    background: var(--white);
+    color: var(--ink);
+    border: 1px solid var(--sand);
+    border-radius: 15px;
+    box-shadow: var(--sh-sm);
     margin: 0 30px;
   }
   #scoreboard-menu .scoreboard-label {
-    color: #1A6B6B;
-    border-right-color: #e0ebe9;
+    color: var(--warm-muted);
+    border-right-color: var(--line);
   }
   #scoreboard-menu .team-card {
-    background: #f0f5f4;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    color: var(--ink);
   }
+  #scoreboard-menu .team-score { color: var(--indigo); }
   #scoreboard-menu .team-card.leader {
-    background: linear-gradient(135deg, #F5C04D, #D4A843);
+    background: linear-gradient(150deg, #EEF0FF, #E3E6FF);
+    border-color: var(--indigo-line);
+    color: var(--ink);
   }
+  #scoreboard-menu .team-card.leader .team-score { color: var(--indigo-hover); }
+  #scoreboard-menu .team-card.leader::after { background: var(--indigo); }
+  #scoreboard-menu .team-plus { background: var(--indigo); color: #fff; }
+  #scoreboard-menu .team-plus:hover { filter: brightness(1.08); }
+  #scoreboard-menu .team-card.leader .team-plus { background: var(--indigo-hover); }
+  #scoreboard-menu .team-minus { background: #EDE7DA; color: var(--warm); }
+  #scoreboard-menu .team-minus:hover { background: #e2dccb; }
   #scoreboard-menu .team-name-input { color: inherit; }
   #scoreboard-menu .scoreboard-controls {
-    border-left-color: #e0ebe9;
+    border-left-color: var(--line);
   }
   #scoreboard-menu .scoreboard-controls select,
   #scoreboard-menu .scoreboard-controls button {
-    background: #f0f5f4;
-    color: #1A6B6B;
-    border-color: #dbe8e5;
+    background: var(--cream);
+    color: var(--warm);
+    border-color: var(--line);
   }
   #scoreboard-menu .scoreboard-controls .btn-reset {
-    background: #fce8e4;
-    color: #c0392b;
-    border-color: #f5d1c9;
+    background: var(--cream);
+    color: var(--red);
+    border-color: var(--line);
   }
 
   @media (max-width: 700px) {
@@ -826,10 +917,10 @@
   <div class="menu-hero">
     <div class="logo">
       <svg width="40" height="40" viewBox="0 0 40 40">
-        <polygon points="13,2 24,13 13,24 2,13" fill="#0ABAB5" opacity="0.9"/>
-        <polygon points="27,2 38,13 27,24 16,13" fill="#F5B731" opacity="0.9"/>
-        <polygon points="13,16 24,27 13,38 2,27" fill="#E65C3C" opacity="0.9"/>
-        <polygon points="27,16 38,27 27,38 16,27" fill="#7A2D4E" opacity="0.9"/>
+        <polygon points="13,2 24,13 13,24 2,13" fill="#818CF8" opacity="0.95"/>
+        <polygon points="27,2 38,13 27,24 16,13" fill="#A855F7" opacity="0.9"/>
+        <polygon points="13,16 24,27 13,38 2,27" fill="#EBD9A8" opacity="0.95"/>
+        <polygon points="27,16 38,27 27,38 16,27" fill="#C7D2FE" opacity="0.9"/>
       </svg>
       <span style="font-size: 0.9rem; letter-spacing: 2px; opacity: 0.85; font-weight: 600;">COVALENT BONDING</span>
     </div>
@@ -898,10 +989,10 @@
   <div class="menu-footer">
     <div class="logo-small">
       <svg width="18" height="18" viewBox="0 0 40 40">
-        <polygon points="13,2 24,13 13,24 2,13" fill="#0ABAB5" opacity="0.85"/>
-        <polygon points="27,2 38,13 27,24 16,13" fill="#F5B731" opacity="0.85"/>
-        <polygon points="13,16 24,27 13,38 2,27" fill="#E65C3C" opacity="0.85"/>
-        <polygon points="27,16 38,27 27,38 16,27" fill="#7A2D4E" opacity="0.85"/>
+        <polygon points="13,2 24,13 13,24 2,13" fill="#6366F1" opacity="0.9"/>
+        <polygon points="27,2 38,13 27,24 16,13" fill="#A855F7" opacity="0.85"/>
+        <polygon points="13,16 24,27 13,38 2,27" fill="#B4791F" opacity="0.9"/>
+        <polygon points="27,16 38,27 27,38 16,27" fill="#4F46E5" opacity="0.85"/>
       </svg>
       <span>Press F to toggle fullscreen - ideal for projection</span>
     </div>
@@ -975,7 +1066,7 @@
           <div class="explanation" id="g1-explanation"></div>
         </div>
         <div id="g1-trivia-reveal" style="display:none;">
-          <div style="font-size: 1.6rem; font-weight: 700; color: #7A2D4E; text-align: center; padding: 30px 20px; background: #f8fafa; border-radius: 12px; margin-bottom: 16px;" id="g1-trivia-answer"></div>
+          <div style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--green); text-align: center; padding: 30px 20px; background: var(--cream); border-radius: 12px; margin-bottom: 16px;" id="g1-trivia-answer"></div>
           <div class="explanation" id="g1-trivia-explain"></div>
         </div>
       </div>
@@ -1106,12 +1197,12 @@
           <h3 id="g3-reveal-title">Case Solved</h3>
         </div>
         <div id="g3-case-reveal">
-          <div style="font-size: 1.05rem; color: #1A6B6B; margin-bottom: 14px; font-weight: 600;" id="g3-reveal-formula"></div>
+          <div style="font-size: 1.05rem; color: var(--indigo); margin-bottom: 14px; font-weight: 600;" id="g3-reveal-formula"></div>
           <div class="lewis-display" id="g3-lewis"></div>
           <div class="explanation" id="g3-explanation"></div>
         </div>
         <div id="g3-trivia-reveal" style="display:none;">
-          <div style="font-size: 1.6rem; font-weight: 700; color: #7A2D4E; text-align: center; padding: 30px 20px; background: #f8fafa; border-radius: 12px; margin-bottom: 16px;" id="g3-trivia-answer"></div>
+          <div style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--green); text-align: center; padding: 30px 20px; background: var(--cream); border-radius: 12px; margin-bottom: 16px;" id="g3-trivia-answer"></div>
           <div class="explanation" id="g3-trivia-explain"></div>
         </div>
       </div>
@@ -1126,10 +1217,10 @@
 <div class="app-footer">
   <div class="brand">
     <svg width="16" height="16" viewBox="0 0 40 40">
-      <polygon points="13,2 24,13 13,24 2,13" fill="#0ABAB5" opacity="0.85"/>
-      <polygon points="27,2 38,13 27,24 16,13" fill="#F5B731" opacity="0.85"/>
-      <polygon points="13,16 24,27 13,38 2,27" fill="#E65C3C" opacity="0.85"/>
-      <polygon points="27,16 38,27 27,38 16,27" fill="#7A2D4E" opacity="0.85"/>
+      <polygon points="13,2 24,13 13,24 2,13" fill="#6366F1" opacity="0.9"/>
+      <polygon points="27,2 38,13 27,24 16,13" fill="#A855F7" opacity="0.85"/>
+      <polygon points="13,16 24,27 13,38 2,27" fill="#B4791F" opacity="0.9"/>
+      <polygon points="27,16 38,27 27,38 16,27" fill="#4F46E5" opacity="0.85"/>
     </svg>
     <span>Covalent Bonding Review Games - Cycle 4</span>
   </div>
