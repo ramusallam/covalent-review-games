@@ -1674,10 +1674,19 @@ function markCorrect(containerId, answer) {
   });
 }
 
+function shuffleChoices(d) {
+  const order = d.choices.map((_, i) => i);
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  return { choices: order.map(i => d.choices[i]), answer: order.indexOf(d.answer) };
+}
+
 /* ============================================================
    GAME 1 - Speed Draw + Trivia
    ============================================================ */
-let g1Index = 0, g1Timer = null, g1Remaining = 60, g1Paused = false;
+let g1Index = 0, g1Timer = null, g1Remaining = 60, g1Paused = false, g1Shuffled = null;
 
 function g1Reset() { g1Index = 0; g1Render(); }
 function g1Stop() { if (g1Timer) { clearInterval(g1Timer); g1Timer = null; } }
@@ -1733,7 +1742,8 @@ function g1Render() {
     document.getElementById('g1-trivia-stage').style.display = 'block';
     document.getElementById('g1-trivia-cat').textContent = d.category;
     document.getElementById('g1-trivia-q').innerHTML = d.q;
-    renderChoices('g1-trivia-choices', d.choices);
+    g1Shuffled = shuffleChoices(d);
+    renderChoices('g1-trivia-choices', g1Shuffled.choices);
   }
   g1Remaining = parseInt(document.getElementById('g1-timer-length').value);
   g1UpdateTimer();
@@ -1756,10 +1766,10 @@ function g1Reveal() {
   } else {
     card.classList.add('trivia-reveal');
     const letters = ['A', 'B', 'C', 'D'];
-    document.getElementById('g1-reveal-title').innerHTML = 'Answer: ' + letters[d.answer];
+    document.getElementById('g1-reveal-title').innerHTML = 'Answer: ' + letters[g1Shuffled.answer];
     document.getElementById('g1-chem-reveal').style.display = 'none';
     document.getElementById('g1-trivia-reveal').style.display = 'block';
-    document.getElementById('g1-trivia-answer').innerHTML = letters[d.answer] + ' - ' + d.choices[d.answer];
+    document.getElementById('g1-trivia-answer').innerHTML = letters[g1Shuffled.answer] + ' - ' + g1Shuffled.choices[g1Shuffled.answer];
     document.getElementById('g1-trivia-explain').innerHTML = d.explanation;
   }
   document.getElementById('g1-next-btn').textContent =
@@ -1781,7 +1791,7 @@ function g1Next() {
 /* ============================================================
    GAME 2 - Lightning Round (unified multiple choice)
    ============================================================ */
-let g2Index = 0, g2Timer = null, g2Remaining = 30, g2Paused = false;
+let g2Index = 0, g2Timer = null, g2Remaining = 30, g2Paused = false, g2Shuffled = null;
 
 function g2Reset() { g2Index = 0; g2Render(); }
 function g2Stop() { if (g2Timer) { clearInterval(g2Timer); g2Timer = null; } }
@@ -1832,7 +1842,8 @@ function g2Render() {
     db.textContent = d.difficulty.toUpperCase();
     db.className = 'difficulty-badge diff-' + d.difficulty;
   }
-  renderChoices('g2-choices', d.choices);
+  g2Shuffled = shuffleChoices(d);
+  renderChoices('g2-choices', g2Shuffled.choices);
   document.getElementById('g2-reveal-btn').style.display = 'inline-block';
   document.getElementById('g2-next-btn').style.display = 'none';
   document.getElementById('g2-explanation-card').style.display = 'none';
@@ -1843,7 +1854,7 @@ function g2Render() {
 function g2Reveal() {
   g2Stop();
   const d = G2_DATA[g2Index];
-  markCorrect('g2-choices', d.answer);
+  markCorrect('g2-choices', g2Shuffled.answer);
   document.getElementById('g2-explanation').innerHTML = d.explanation;
   document.getElementById('g2-explanation-card').style.display = 'block';
   document.getElementById('g2-reveal-btn').style.display = 'none';
@@ -1861,7 +1872,7 @@ function g2Next() {
 /* ============================================================
    GAME 3 - Formula Files + Intel Drops
    ============================================================ */
-let g3Index = 0, g3Timer = null, g3Remaining = 90, g3Paused = false;
+let g3Index = 0, g3Timer = null, g3Remaining = 90, g3Paused = false, g3Shuffled = null;
 
 function g3Reset() { g3Index = 0; g3Render(); }
 function g3Stop() { if (g3Timer) { clearInterval(g3Timer); g3Timer = null; } }
@@ -1925,7 +1936,8 @@ function g3Render() {
     document.getElementById('g3-trivia-stage').style.display = 'block';
     document.getElementById('g3-trivia-cat').textContent = d.category;
     document.getElementById('g3-trivia-q').innerHTML = d.q;
-    renderChoices('g3-trivia-choices', d.choices);
+    g3Shuffled = shuffleChoices(d);
+    renderChoices('g3-trivia-choices', g3Shuffled.choices);
   }
   g3Remaining = parseInt(document.getElementById('g3-timer-length').value);
   g3UpdateTimer();
@@ -1952,7 +1964,7 @@ function g3Reveal() {
     document.getElementById('g3-reveal-title').textContent = 'Intel Decoded';
     document.getElementById('g3-case-reveal').style.display = 'none';
     document.getElementById('g3-trivia-reveal').style.display = 'block';
-    document.getElementById('g3-trivia-answer').innerHTML = letters[d.answer] + ' - ' + d.choices[d.answer];
+    document.getElementById('g3-trivia-answer').innerHTML = letters[g3Shuffled.answer] + ' - ' + g3Shuffled.choices[g3Shuffled.answer];
     document.getElementById('g3-trivia-explain').innerHTML = d.explanation;
   }
   document.getElementById('g3-next-btn').textContent =
